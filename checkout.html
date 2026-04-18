@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QC CHEATS | Checkout</title>
+<meta name="description" content="Complete your purchase securely">
+<link rel="shortcut icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+    --accent:     #ff0000;
+    --accent-dim: rgba(255,0,0,0.08);
+    --bg:         #030303;
+    --bg2:        #070707;
+    --card:       #0a0a0a;
+    --border:     #1a1a1a;
+    --border2:    #252525;
+    --text:       #e8e8e8;
+    --muted:      #555;
+    --muted2:     #3a3a3a;
+    --mono:       'Courier New', monospace;
+    --display:    'Bebas Neue', sans-serif;
+    --body:       'Rajdhani', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { 
+    font-family: var(--body); 
+    background: var(--bg); 
+    color: var(--text); 
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+.grid-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,0,0,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,0,0.022) 1px, transparent 1px);
+    background-size: 44px 44px;
+}
+.grid-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255,0,0,0.06) 0%, transparent 70%);
+}
+
+.navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 66px;
+    background: rgba(3,3,3,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+}
+.navbar::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,0,0,0.4), transparent);
+}
+.nav-logo img { height: 38px; display: block; }
+.nav-links {
+    display: flex; align-items: center; justify-content: center;
+    gap: 36px; list-style: none;
+    position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .2s; position: relative;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--accent);
+    transform: scaleX(0); transition: transform .2s; transform-origin: left;
+}
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-discord {
+    display: flex; align-items: center; gap: 8px; padding: 8px 16px;
+    background: none; border: 1px solid var(--border2); border-radius: 3px;
+    color: var(--muted); font-family: var(--body); font-size: 12px;
+    font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: border-color .2s, color .2s;
+}
+.nav-discord:hover { border-color: #5865F2; color: #5865F2; }
+.nav-dashboard {
+    display: flex; align-items: center; gap: 8px; padding: 8px 18px;
+    background: var(--accent); border: none; border-radius: 3px;
+    color: #fff; font-family: var(--body); font-size: 12px;
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: background .2s, box-shadow .2s;
+}
+.nav-dashboard:hover { background: #cc0000; box-shadow: 0 0 16px rgba(255,0,0,0.3); }
+
+.page-wrap { position: relative; z-index: 1; padding-top: 66px; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 80px 24px; }
+
+.checkout-container {
+    max-width: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.section-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.order-summary {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.order-summary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.product-name {
+    font-family: var(--display);
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.product-subtitle {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--body);
+    font-size: 13px;
+}
+.summary-row:last-child {
+    border-bottom: none;
+}
+.summary-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.summary-value {
+    color: var(--text);
+    font-weight: 600;
+}
+.summary-value.price {
+    color: var(--accent);
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border2);
+}
+.total-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.total-value {
+    font-family: var(--display);
+    font-size: 32px;
+    color: var(--accent);
+    letter-spacing: 2px;
+}
+
+.payment-details {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.payment-details::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.form-group input {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    color: #fff;
+    padding: 12px 14px;
+    font-family: var(--body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+}
+.form-group input:focus {
+    border-color: var(--accent);
+}
+.form-group input::placeholder {
+    color: #333;
+}
+
+.discount-row {
+    display: flex;
+    gap: 10px;
+}
+.discount-row input {
+    flex: 1;
+}
+.apply-btn {
+    padding: 12px 20px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(255,0,0,0.2);
+    border-radius: 3px;
+    color: var(--accent);
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s;
+}
+.apply-btn:hover {
+    background: rgba(255,0,0,0.15);
+}
+
+.payment-methods {
+    margin-top: 24px;
+}
+.payment-methods-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.payment-option {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.payment-option:hover {
+    border-color: rgba(255,0,0,0.3);
+}
+.payment-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+}
+.payment-option i {
+    font-size: 24px;
+    color: var(--text);
+}
+.payment-option.selected i {
+    color: var(--accent);
+}
+.payment-option .method-name {
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+.payment-option .method-desc {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+}
+
+.cashapp-option {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+}
+
+.pay-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    background: var(--accent);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s, box-shadow .2s, transform .1s;
+    margin-top: 20px;
+}
+.pay-btn:hover {
+    background: #cc0000;
+    box-shadow: 0 0 32px rgba(255,0,0,0.4);
+    transform: translateY(-2px);
+}
+.pay-btn:active {
+    transform: translateY(0);
+}
+.pay-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.terms {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted2);
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+.terms a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.cashapp-info {
+    display: none;
+    background: rgba(0,200,83,0.08);
+    border: 1px solid rgba(0,200,83,0.25);
+    border-radius: 3px;
+    padding: 16px;
+    margin-top: 16px;
+}
+.cashapp-info.show {
+    display: block;
+}
+.cashapp-info-title {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: #00c853;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.cashapp-info-text {
+    font-family: var(--body);
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.cashapp-cashtag {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(0,200,83,0.3);
+    border-radius: 3px;
+    padding: 12px;
+    font-family: var(--mono);
+    font-size: 16px;
+    color: #00c853;
+    text-align: center;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.cashapp-cashtag:hover {
+    background: rgba(0,200,83,0.1);
+}
+.cashapp-cashtag i {
+    font-size: 14px;
+}
+
+.alert {
+    border-radius: 3px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-family: var(--body);
+    font-size: 12px;
+    display: none;
+}
+.alert.show {
+    display: block;
+}
+.alert.error {
+    background: rgba(255,0,0,0.08);
+    border: 1px solid rgba(255,0,0,0.2);
+    color: #ff6666;
+}
+.alert.success {
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.2);
+    color: #4ade80;
+}
+
+@media(max-width: 768px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+    .navbar { padding: 0 20px; }
+    .nav-links, .nav-actions { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="navbar">
+    <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt="FireCheats"></a></div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="customer/index.html">Redeem License</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="https://discord.gg/firecheats" target="_blank" class="nav-discord"><i class="fab fa-discord"></i> Discord</a>
+        <a href="customer/index.html" class="nav-dashboard"><i class="fa fa-user"></i> Dashboard</a>
+    </div>
+</nav>
+
+<div class="page-wrap">
+    <div class="checkout-container">
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <div class="section-title">Order Summary</div>
+            <div class="product-name" id="product-name">Loading...</div>
+            <div class="product-subtitle" id="product-subtitle">Software License</div>
+            
+            <div class="summary-row">
+                <span class="summary-label">Duration</span>
+                <span class="summary-value" id="duration">-</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Type</span>
+                <span class="summary-value">Software License</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Delivery</span>
+                <span class="summary-value">Instant - on this page</span>
+            </div>
+            
+            <div class="total-row">
+                <span class="total-label">Total</span>
+                <span class="total-value" id="total-price">€0.00</span>
+            </div>
+        </div>
+
+        <!-- Payment Details -->
+        <div class="payment-details">
+            <div class="section-title">Payment Details</div>
+            
+            <div id="alert" class="alert"></div>
+            
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Discount Code</label>
+                <div class="discount-row">
+                    <input type="text" id="discount-code" placeholder="Enter code">
+                    <button class="apply-btn" onclick="applyDiscount()">Apply</button>
+                </div>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-methods-title">Payment Method</div>
+                <div class="payment-options" style="grid-template-columns: 1fr;">
+                    <div class="payment-option cashapp-option selected" data-method="cashapp" onclick="selectMethod('cashapp')">
+                        <i class="fas fa-dollar-sign" style="color: #00c853;"></i>
+                        <span class="method-name" style="color: #00c853;">Cash App</span>
+                        <span class="method-desc">$Zack18459</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cashapp-info show" id="cashapp-info">
+                <div class="cashapp-info-title">
+                    <i class="fas fa-mobile-alt"></i>
+                    Pay with Cash App
+                </div>
+                <div class="cashapp-info-text">
+                    1. Open Cash App on your phone<br>
+                    2. Send payment to the Cashtag below<br>
+                    3. <strong>Copy the payment note below</strong> and paste it in Cash App<br>
+                    4. Click "I've Paid" to complete
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label style="color: #00c853;">Payment Note (Copy this to Cash App)</label>
+                    <input type="text" id="cashapp-note" readonly style="background: rgba(0,200,83,0.1); border-color: rgba(0,200,83,0.3); color: #00c853; font-family: var(--mono); cursor: pointer;" onclick="copyNote()">
+                </div>
+                <div class="cashapp-cashtag" onclick="copyCashtag()">
+                    <i class="fas fa-copy"></i>
+                    $Zack18459
+                </div>
+            </div>
+            
+            <button class="pay-btn" id="pay-btn" onclick="processPayment()">
+                <i class="fas fa-lock"></i>
+                PAY <span id="pay-amount">€0.00</span>
+            </button>
+            
+            <div class="terms">
+                By completing this purchase, you agree to our<br>
+                <a href="https://docs.google.com/document/d/1HnBQVndF_roLeS40VSeLsNZqLRHA1uIRWTeCoHoWpwU/edit" target="_blank">Terms of Service</a> and 
+                <a href="https://docs.google.com/document/d/1HnBQVndF_roLeS40VSeLsNZqLRHA1uIRWTeCoHoWpwU/edit" target="_blank">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Get URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const product = urlParams.get('product') || 'Unknown Product';
+const tier = urlParams.get('tier') || 'day';
+const price = parseFloat(urlParams.get('price')) || 0;
+
+// Product display mapping
+const productNames = {
+    'Spoofer': 'SPOOFER',
+    'Fortnite Private': 'FORTNITE PRIVATE',
+    'Fortnite Internal': 'FORTNITE INTERNAL',
+    'Rust External': 'RUST EXTERNAL',
+    'Ark Internal': 'ARK INTERNAL',
+    'Valorant Internal': 'VALORANT INTERNAL',
+    'Valorant Colorbot': 'VALORANT COLORBOT',
+    'R6 External': 'RAINBOW 6',
+    'Apex External': 'APEX EXTERNAL'
+};
+
+const tierLabels = {
+    'day': '1 Day',
+    'week': '1 Week',
+    'month': '1 Month',
+    'lifetime': 'Lifetime'
+};
+
+// Check if product is still available
+const availableProducts = ['Spoofer', 'Fortnite Private', 'Fortnite Internal'];
+if (!availableProducts.includes(product)) {
+    document.body.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#030303;color:#fff;font-family:sans-serif;text-align:center;padding:20px;">
+            <div>
+                <h1 style="color:#ff0000;margin-bottom:20px;">PRODUCT UNAVAILABLE</h1>
+                <p style="color:#888;margin-bottom:30px;">This product is no longer available for purchase.</p>
+                <a href="index.html" style="display:inline-block;padding:12px 24px;background:#ff0000;color:#fff;text-decoration:none;border-radius:3px;">Back to Home</a>
+            </div>
+        </div>
+    `;
+}
+
+// Initialize page
+let currentPrice = price;
+let selectedMethod = 'cashapp';
+let orderId = 'FC-' + Date.now();
+
+document.getElementById('product-name').textContent = productNames[product] || product.toUpperCase();
+document.getElementById('duration').textContent = tierLabels[tier] || tier;
+document.getElementById('total-price').textContent = '€' + price.toFixed(2);
+document.getElementById('pay-amount').textContent = '€' + price.toFixed(2);
+
+// Generate and set Cash App note
+generateNote();
+
+// Monitor email changes to update note
+document.getElementById('email').addEventListener('input', generateNote);
+
+function generateNote() {
+    const email = document.getElementById('email').value.trim() || 'your-email';
+    const note = `Order: ${orderId} | ${product} ${tierLabels[tier]} | ${email}`;
+    document.getElementById('cashapp-note').value = note;
+}
+
+function selectMethod(method) {
+    selectedMethod = method;
+    document.querySelectorAll('.payment-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    document.querySelector(`[data-method="${method}"]`).classList.add('selected');
+    
+    // Show/hide Cash App info
+    const cashappInfo = document.getElementById('cashapp-info');
+    if (method === 'cashapp') {
+        cashappInfo.classList.add('show');
+        document.getElementById('pay-btn').innerHTML = '<i class="fas fa-check"></i> I\'VE PAID';
+    } else {
+        cashappInfo.classList.remove('show');
+        document.getElementById('pay-btn').innerHTML = '<i class="fas fa-lock"></i> PAY <span id="pay-amount">€' + currentPrice.toFixed(2) + '</span>';
+    }
+}
+
+function showAlert(message, type) {
+    const alert = document.getElementById('alert');
+    alert.textContent = message;
+    alert.className = 'alert ' + type + ' show';
+    setTimeout(() => {
+        alert.classList.remove('show');
+    }, 5000);
+}
+
+function applyDiscount() {
+    const code = document.getElementById('discount-code').value.trim();
+    if (!code) {
+        showAlert('Please enter a discount code', 'error');
+        return;
+    }
+    
+    // Simple discount codes
+    const discounts = {
+        'FIREDISCOUNT': 0.05,
+        'FIRE10': 0.10,
+        'VIP': 0.15
+    };
+    
+    if (discounts[code.toUpperCase()]) {
+        const discount = discounts[code.toUpperCase()];
+        currentPrice = price * (1 - discount);
+        document.getElementById('total-price').textContent = '€' + currentPrice.toFixed(2);
+        if (selectedMethod !== 'cashapp') {
+            document.getElementById('pay-amount').textContent = '€' + currentPrice.toFixed(2);
+        }
+        showAlert('Discount applied: ' + (discount * 100) + '% off', 'success');
+    } else {
+        showAlert('Invalid discount code', 'error');
+    }
+}
+
+function copyCashtag() {
+    navigator.clipboard.writeText('$Zack18459').then(() => {
+        showAlert('Cashtag copied to clipboard!', 'success');
+    });
+}
+
+function copyNote() {
+    const note = document.getElementById('cashapp-note').value;
+    navigator.clipboard.writeText(note).then(() => {
+        showAlert('Payment note copied! Paste this in Cash App', 'success');
+    });
+}
+
+function processPayment() {
+    const email = document.getElementById('email').value.trim();
+    
+    if (!email || !email.includes('@')) {
+        showAlert('Please enter a valid email address', 'error');
+        return;
+    }
+    
+    if (!selectedMethod) {
+        showAlert('Please select a payment method', 'error');
+        return;
+    }
+    
+    if (selectedMethod === 'cashapp') {
+        // Cash App payment flow
+        const btn = document.getElementById('pay-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING PAYMENT...';
+        
+        const note = document.getElementById('cashapp-note').value;
+        
+        // Store order info
+        const orderData = {
+            orderId: orderId,
+            product: product,
+            tier: tier,
+            price: currentPrice,
+            email: email,
+            method: 'cashapp',
+            cashtag: '$Zack18459',
+            note: note,
+            status: 'pending_verification',
+            date: new Date().toISOString()
+        };
+        localStorage.setItem('lastOrder', JSON.stringify(orderData));
+        
+        // Call API to verify payment
+        fetch('/api/verify-cashapp-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                orderId: orderId,
+                email: email,
+                amount: currentPrice,
+                product: product,
+                tier: tier,
+                note: note
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.paid) {
+                    // Payment verified
+                    window.location.href = 'success.html?order=' + orderId + '&method=cashapp&verified=true';
+                } else {
+                    // Payment pending - redirect to success page with instructions
+                    window.location.href = 'success.html?order=' + orderId + '&method=cashapp&pending=true';
+                }
+            } else {
+                showAlert(data.message || 'Error verifying payment', 'error');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-check"></i> I\'VE PAID';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Still redirect to success page even if API fails
+            window.location.href = 'success.html?order=' + orderId + '&method=cashapp';
+        });
+    }
+}
+
+// Cash App is pre-selected by default
+selectMethod('cashapp');
+</script>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — QC CHEATS</title>
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #ff0000;
+            --accent-dim: rgba(255,0,0,0.08);
+            --bg: #050505;
+            --bg2: #0a0a0a;
+            --card: #0d0d0d;
+            --border: #1a1a1a;
+            --border2: #2a2a2a;
+            --text: #e5e5e5;
+            --muted: #888;
+            --muted2: #555;
+            --display: 'Bebas Neue', sans-serif;
+            --body: 'Rajdhani', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--body);
+            min-height: 100vh;
+        }
+        .admin-header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-title {
+            font-family: var(--display);
+            font-size: 32px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .admin-title i { color: var(--accent); }
+        .admin-nav {
+            display: flex;
+            gap: 30px;
+        }
+        .admin-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: all .2s;
+            cursor: pointer;
+        }
+        .admin-nav a:hover, .admin-nav a.active {
+            color: var(--text);
+            border-bottom-color: var(--accent);
+        }
+        .logout-btn {
+            background: none;
+            border: 1px solid var(--border2);
+            color: var(--muted);
+            padding: 8px 20px;
+            font-family: var(--body);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .logout-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .admin-content {
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform .3s;
+        }
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+        .stat-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .stat-value {
+            font-family: var(--display);
+            font-size: 36px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        .section-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section-title {
+            font-family: var(--display);
+            font-size: 20px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title i { color: var(--accent); }
+        .btn {
+            background: var(--accent);
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            padding: 10px 20px;
+            font-family: var(--body);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover { background: #cc0000; }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border2);
+            color: var(--muted);
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+        .section-content {
+            padding: 0;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 15px 25px;
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td {
+            padding: 15px 25px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        .data-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-paid {
+            background: rgba(34,197,94,0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+        .status-pending {
+            background: rgba(245,158,11,0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245,158,11,0.3);
+        }
+        .status-cancelled {
+            background: rgba(239,68,68,0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239,68,68,0.3);
+        }
+        .key-tag {
+            font-family: monospace;
+            background: var(--bg);
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .key-used {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border2);
+            border-radius: 3px;
+            color: #fff;
+            padding: 12px 15px;
+            font-family: var(--body);
+            font-size: 14px;
+            outline: none;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent);
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--border);
+        }
+        .modal-title {
+            font-family: var(--display);
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        .modal-body {
+            padding: 25px;
+        }
+        .modal-footer {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .generated-keys {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .generated-key {
+            font-family: monospace;
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .generated-key:last-child { border-bottom: none; }
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            padding: 5px;
+        }
+        .copy-btn:hover { color: var(--accent); }
+        .login-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 40px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-logo {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+        .login-title {
+            font-family: var(--display);
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .login-error {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 15px;
+            display: none;
+        }
+        .hidden { display: none !important; }
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .admin-header { flex-direction: column; gap: 20px; padding: 20px; }
+            .admin-nav { gap: 20px; }
+            .admin-content { padding: 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .data-table { font-size: 12px; }
+            .data-table th, .data-table td { padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <img src="images/logo.png" alt="QC CHEATS" class="login-logo">
+            <h1 class="login-title">ADMIN LOGIN</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <div id="loginError" class="login-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="hidden">
+        <header class="admin-header">
+            <div class="admin-title">
+                <i class="fas fa-shield-alt"></i>
+                QC CHEATS ADMIN
+            </div>
+            <nav class="admin-nav">
+                <a class="active" onclick="showSection('dashboard')">Dashboard</a>
+                <a onclick="showSection('orders')">Orders</a>
+                <a onclick="showSection('keys')">License Keys</a>
+            </nav>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </header>
+
+        <main class="admin-content">
+            <!-- Dashboard Section -->
+            <div id="section-dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="stat-value" id="statTotalOrders">-</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="stat-value" id="statRevenue">$-</div>
+                        <div class="stat-label">Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-value" id="statCustomers">-</div>
+                        <div class="stat-label">Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-key"></i></div>
+                        <div class="stat-value" id="statKeys">-</div>
+                        <div class="stat-label">License Keys</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-clock"></i>
+                            Recent Orders
+                        </h2>
+                        <button class="btn btn-secondary" onclick="showSection('orders')">
+                            View All
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrdersTable">
+                                <tr><td colspan="5" style="text-align: center; color: var(--muted);">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div id="section-orders" class="hidden">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-shopping-cart"></i>
+                            All Orders
+                        </h2>
+                        <button class="btn btn-secondary" onclick="loadOrders()">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allOrdersTable">
+                                <tr><td colspan="7" style="text-align: center; color: var(--muted);">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keys Section -->
+            <div id="section-keys" class="hidden">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-key"></i>
+                            License Keys
+                        </h2>
+                        <button class="btn" onclick="showGenerateKeyModal()">
+                            <i class="fas fa-plus"></i> Generate Keys
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th>
+                                    <th>Product</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Used By</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="keysTable">
+                                <tr><td colspan="7" style="text-align: center; color: var(--muted);">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generate Key Modal -->
+    <div id="generateKeyModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Generate License Keys</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Product</label>
+                    <select id="keyProduct">
+                        <option value="Fortnite Private">Fortnite Private</option>
+                        <option value="Fortnite Internal">Fortnite Internal</option>
+                        <option value="Spoofer">Spoofer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" id="keyQuantity" value="1" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label>Duration</label>
+                    <select id="keyDuration">
+                        <option value="lifetime">Lifetime</option>
+                        <option value="30d">30 Days</option>
+                        <option value="90d">90 Days</option>
+                        <option value="1y">1 Year</option>
+                    </select>
+                </div>
+                <div id="generatedKeysContainer" class="generated-keys hidden">
+                    <label style="display: block; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Generated Keys</label>
+                    <div id="generatedKeysList"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideGenerateKeyModal()">Close</button>
+                <button class="btn" onclick="generateKeys()">
+                    <i class="fas fa-magic"></i> Generate
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = localStorage.getItem('adminToken');
+
+        // Check if already logged in
+        if (authToken) {
+            showDashboard();
+        }
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorDiv = document.getElementById('loginError');
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.user.isAdmin) {
+                    authToken = data.token;
+                    localStorage.setItem('adminToken', authToken);
+                    showDashboard();
+                } else if (data.success && !data.user.isAdmin) {
+                    errorDiv.textContent = 'Access denied. Admin privileges required.';
+                    errorDiv.style.display = 'block';
+                } else {
+                    errorDiv.textContent = data.message || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        function showDashboard() {
+            document.getElementById('loginOverlay').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            loadDashboard();
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            authToken = null;
+            location.reload();
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            document.getElementById('section-dashboard').classList.add('hidden');
+            document.getElementById('section-orders').classList.add('hidden');
+            document.getElementById('section-keys').classList.add('hidden');
+
+            // Show selected section
+            document.getElementById(`section-${sectionName}`).classList.remove('hidden');
+
+            // Update nav
+            document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Load data
+            if (sectionName === 'dashboard') loadDashboard();
+            if (sectionName === 'orders') loadOrders();
+            if (sectionName === 'keys') loadKeys();
+        }
+
+        async function apiRequest(url, options = {}) {
+            const response = await fetch(url, {
+                ...options,
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json',
+                    ...options.headers
+                }
+            });
+
+            if (response.status === 401) {
+                logout();
+                return null;
+            }
+
+            return response.json();
+        }
+
+        async function loadDashboard() {
+            const data = await apiRequest('/api/admin/dashboard');
+            if (!data) return;
+
+            document.getElementById('statTotalOrders').textContent = data.stats.totalOrders;
+            document.getElementById('statRevenue').textContent = '$' + data.stats.totalRevenue;
+            document.getElementById('statCustomers').textContent = data.stats.totalCustomers;
+            document.getElementById('statKeys').textContent = `${data.stats.usedKeys}/${data.stats.totalKeys}`;
+
+            // Load recent orders
+            const ordersData = await apiRequest('/api/admin/orders');
+            if (ordersData && ordersData.orders) {
+                const recentOrders = ordersData.orders.slice(0, 5);
+                const tbody = document.getElementById('recentOrdersTable');
+                tbody.innerHTML = recentOrders.map(order => `
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>${order.product}</td>
+                        <td>$${order.amount}</td>
+                        <td><span class="status-badge status-${order.status}">${order.status}</span></td>
+                        <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+                    </tr>
+                `).join('') || '<tr><td colspan="5" style="text-align: center; color: var(--muted);">No orders yet</td></tr>';
+            }
+        }
+
+        async function loadOrders() {
+            const data = await apiRequest('/api/admin/orders');
+            if (!data) return;
+
+            const tbody = document.getElementById('allOrdersTable');
+            tbody.innerHTML = data.orders.map(order => `
+                <tr>
+                    <td>${order.id}</td>
+                    <td>${order.product}</td>
+                    <td>${order.customerEmail}</td>
+                    <td>$${order.amount}</td>
+                    <td><span class="status-badge status-${order.status}">${order.status}</span></td>
+                    <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+                    <td>
+                        <select onchange="updateOrderStatus('${order.id}', this.value)" style="background: var(--bg); border: 1px solid var(--border2); color: #fff; padding: 5px 10px;">
+                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="awaiting_payment" ${order.status === 'awaiting_payment' ? 'selected' : ''}>Awaiting Payment</option>
+                            <option value="paid" ${order.status === 'paid' ? 'selected' : ''}>Paid</option>
+                            <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                        </select>
+                    </td>
+                </tr>
+            `).join('') || '<tr><td colspan="7" style="text-align: center; color: var(--muted);">No orders yet</td></tr>';
+        }
+
+        async function updateOrderStatus(orderId, status) {
+            const data = await apiRequest(`/api/admin/orders/${orderId}/status`, {
+                method: 'POST',
+                body: JSON.stringify({ status })
+            });
+
+            if (data && data.success) {
+                loadOrders();
+            }
+        }
+
+        async function loadKeys() {
+            const data = await apiRequest('/api/admin/keys');
+            if (!data) return;
+
+            const tbody = document.getElementById('keysTable');
+            tbody.innerHTML = data.keys.map(key => `
+                <tr>
+                    <td><span class="key-tag ${key.used ? 'key-used' : ''}">${key.key}</span></td>
+                    <td>${key.product}</td>
+                    <td>${key.duration}</td>
+                    <td><span class="status-badge ${key.used ? 'status-cancelled' : 'status-paid'}">${key.used ? 'Used' : 'Available'}</span></td>
+                    <td>${key.usedBy || '-'}</td>
+                    <td>${new Date(key.createdAt).toLocaleDateString()}</td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="deleteKey('${key.key}')" style="padding: 5px 10px; font-size: 11px;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('') || '<tr><td colspan="7" style="text-align: center; color: var(--muted);">No keys generated yet</td></tr>';
+        }
+
+        function showGenerateKeyModal() {
+            document.getElementById('generateKeyModal').classList.add('show');
+            document.getElementById('generatedKeysContainer').classList.add('hidden');
+        }
+
+        function hideGenerateKeyModal() {
+            document.getElementById('generateKeyModal').classList.remove('show');
+            document.getElementById('generatedKeysList').innerHTML = '';
+        }
+
+        async function generateKeys() {
+            const product = document.getElementById('keyProduct').value;
+            const quantity = parseInt(document.getElementById('keyQuantity').value);
+            const duration = document.getElementById('keyDuration').value;
+
+            const data = await apiRequest('/api/admin/keys/generate', {
+                method: 'POST',
+                body: JSON.stringify({ product, quantity, duration })
+            });
+
+            if (data && data.success) {
+                const container = document.getElementById('generatedKeysContainer');
+                const list = document.getElementById('generatedKeysList');
+                
+                list.innerHTML = data.keys.map(key => `
+                    <div class="generated-key">
+                        <span>${key}</span>
+                        <button class="copy-btn" onclick="copyToClipboard('${key}')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                `).join('');
+                
+                container.classList.remove('hidden');
+                loadKeys();
+            }
+        }
+
+        async function deleteKey(key) {
+            if (!confirm('Are you sure you want to delete this key?')) return;
+
+            const data = await apiRequest(`/api/admin/keys/${key}`, {
+                method: 'DELETE'
+            });
+
+            if (data && data.success) {
+                loadKeys();
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert('Key copied to clipboard!');
+        }
+    </script>
+</body>
+</html>

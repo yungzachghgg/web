@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from firecheats.net/product8803.php?id=7 by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 Apr 2026 22:02:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QC CHEATS | Fortnite Private</title>
+<meta name="description" content="QC CHEATS — Fortnite Private">
+<meta name="robots" content="index, follow">
+<link rel="shortcut icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+    --accent:     #ff0000;
+    --accent-dim: rgba(255,0,0,0.08);
+    --bg:         #030303;
+    --bg2:        #070707;
+    --card:       #0a0a0a;
+    --border:     #1a1a1a;
+    --border2:    #252525;
+    --text:       #e8e8e8;
+    --muted:      #555;
+    --muted2:     #3a3a3a;
+    --mono:       'Courier New', monospace;
+    --display:    'Bebas Neue', sans-serif;
+    --body:       'Rajdhani', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.grid-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,0,0,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,0,0.022) 1px, transparent 1px);
+    background-size: 44px 44px;
+}
+.grid-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255,0,0,0.06) 0%, transparent 70%);
+}
+
+.navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 66px;
+    background: rgba(3,3,3,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+}
+.navbar::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,0,0,0.4), transparent);
+}
+.nav-logo img { height: 38px; display: block; }
+.nav-links {
+    display: flex; align-items: center; justify-content: center;
+    gap: 36px; list-style: none;
+    position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .2s; position: relative;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--accent);
+    transform: scaleX(0); transition: transform .2s; transform-origin: left;
+}
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-discord {
+    display: flex; align-items: center; gap: 8px; padding: 8px 16px;
+    background: none; border: 1px solid var(--border2); border-radius: 3px;
+    color: var(--muted); font-family: var(--body); font-size: 12px;
+    font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: border-color .2s, color .2s;
+}
+.nav-discord:hover { border-color: #5865F2; color: #5865F2; }
+.nav-dashboard {
+    display: flex; align-items: center; gap: 8px; padding: 8px 18px;
+    background: var(--accent); border: none; border-radius: 3px;
+    color: #fff; font-family: var(--body); font-size: 12px;
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: background .2s, box-shadow .2s;
+}
+.nav-dashboard:hover { background: #cc0000; box-shadow: 0 0 16px rgba(255,0,0,0.3); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+.mobile-nav {
+    display: none; position: fixed; top: 66px; left: 0; right: 0; bottom: 0;
+    z-index: 998; background: rgba(3,3,3,0.98); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+}
+.mobile-nav.show { display: flex; }
+.mobile-nav a { font-family: var(--display); font-size: 36px; color: var(--muted); text-decoration: none; letter-spacing: 4px; transition: color .2s; }
+.mobile-nav a:hover { color: var(--accent); }
+
+.page-wrap { position: relative; z-index: 1; padding-top: 66px; }
+
+.sbar { padding: 13px 24px; text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 2px; }
+.sbar i { margin-right: 8px; }
+.sbar-maint   { background: rgba(245,158,11,0.07); border-bottom: 1px solid rgba(245,158,11,0.25); color: #f59e0b; }
+.sbar-offline { background: rgba(255,0,0,0.06);    border-bottom: 1px solid rgba(255,0,0,0.2);     color: #ff6666; }
+
+.product-section {
+    max-width: 1200px; margin: 0 auto;
+    padding: 60px 24px 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+
+.main-img-wrap {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; position: relative;
+}
+.main-img-wrap::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.main-img-wrap img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+.thumbnails { display: flex; gap: 8px; margin-top: 10px; }
+.thumb { width: 72px; height: 50px; border: 1px solid var(--border2); border-radius: 3px; object-fit: cover; cursor: pointer; transition: border-color .2s; flex-shrink: 0; }
+.thumb:hover, .thumb.active { border-color: var(--accent); }
+
+.product-badges { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.badge-primary { padding: 5px 12px; background: var(--accent); border-radius: 2px; font-family: var(--mono); font-size: 10px; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
+.badge-updated { padding: 5px 12px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 2px; font-family: var(--mono); font-size: 10px; color: #4ade80; letter-spacing: 2px; text-transform: uppercase; }
+.badge-maint   { padding: 5px 12px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); border-radius: 2px; font-family: var(--mono); font-size: 10px; color: #f59e0b; letter-spacing: 2px; text-transform: uppercase; }
+.badge-offline-b { padding: 5px 12px; background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2); border-radius: 2px; font-family: var(--mono); font-size: 10px; color: #ff6666; letter-spacing: 2px; text-transform: uppercase; }
+
+.product-title { font-family: var(--display); font-size: clamp(36px, 5vw, 54px); color: #fff; letter-spacing: 3px; margin-bottom: 24px; line-height: 1; }
+
+.discount-box {
+    background: var(--card); border: 1px solid var(--border2); border-radius: 4px;
+    padding: 18px 20px; margin-bottom: 22px; position: relative; overflow: hidden;
+}
+.discount-box::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.discount-top { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+.discount-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.discount-pct { font-family: var(--display); font-size: 36px; color: var(--accent); letter-spacing: 2px; line-height: 1; }
+.discount-code-wrap { display: flex; flex-direction: column; gap: 4px; }
+.discount-label-txt { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.code-row { display: flex; align-items: center; gap: 8px; }
+.discount-code-txt { font-family: var(--mono); font-size: 14px; color: #fff; letter-spacing: 3px; background: rgba(255,255,255,0.04); border: 1px solid var(--border2); padding: 6px 12px; border-radius: 2px; }
+.copy-btn { width: 30px; height: 30px; background: var(--accent-dim); border: 1px solid rgba(255,0,0,0.2); border-radius: 2px; color: var(--accent); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; transition: background .2s; }
+.copy-btn:hover { background: rgba(255,0,0,0.15); }
+.countdown-row { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+.countdown-row i { color: var(--accent); }
+#countdown { color: var(--text); font-weight: 600; }
+
+.product-desc { font-family: var(--body); font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; padding: 16px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 3px; }
+
+.purchase-form { display: flex; flex-direction: column; gap: 12px; }
+.price-select {
+    width: 100%; padding: 14px 16px;
+    background: #000; border: 1px solid var(--border2); border-radius: 3px;
+    color: var(--text); font-family: var(--body); font-size: 15px; font-weight: 600;
+    outline: none; cursor: pointer; transition: border-color .2s; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center;
+}
+.price-select:focus { border-color: var(--accent); }
+.price-select option { background: #111; }
+.price-select:disabled { opacity: .35; cursor: not-allowed; }
+.buy-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 28px; background: var(--accent); border: none; border-radius: 3px;
+    color: #fff; font-family: var(--body); font-size: 15px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
+    transition: background .2s, box-shadow .2s, transform .1s;
+    text-decoration: none;
+}
+.buy-btn:hover { background: #cc0000; box-shadow: 0 0 32px rgba(255,0,0,0.4); transform: translateY(-2px); }
+.buy-btn:active { transform: translateY(0); }
+.buy-btn.disabled { opacity: .4; pointer-events: none; }
+
+.features-box { max-width: 1200px; margin: 0 auto 60px; padding: 0 24px; }
+.features-inner { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; position: relative; }
+.features-inner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.features-head { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-bottom: 1px solid var(--border); }
+.features-head i { color: var(--accent); }
+.features-head span { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; }
+.features-title { font-family: var(--display); font-size: 28px; color: #fff; letter-spacing: 3px; padding: 0 24px 6px; margin-top: 16px; }
+.features-list { padding: 16px 24px 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+.feature-tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--accent-dim); border: 1px solid rgba(255,0,0,0.2); border-radius: 2px; font-family: var(--mono); font-size: 11px; color: var(--text); letter-spacing: 1px; }
+
+.other-section { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+.other-title { font-family: var(--display); font-size: clamp(28px, 4vw, 44px); color: #fff; letter-spacing: 3px; margin-bottom: 10px; }
+.other-sub { font-family: var(--body); font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+.other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 28px; }
+.product-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; text-decoration: none; display: block; transition: border-color .25s, transform .25s, box-shadow .25s; position: relative; }
+.product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0; transition: opacity .25s; z-index: 2; }
+.product-card:hover { border-color: rgba(255,0,0,0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(255,0,0,0.1); }
+.product-card:hover::before { opacity: 1; }
+.card-img-wrap { position: relative; aspect-ratio: 16/8; overflow: hidden; background: #050505; }
+.card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; filter: brightness(0.85); }
+.product-card:hover .card-img-wrap img { transform: scale(1.04); filter: brightness(1); }
+.card-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.9) 100%); }
+.card-body { padding: 18px 20px 20px; }
+.card-name { font-family: var(--display); font-size: 20px; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+.card-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.card-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border2); border-radius: 2px; font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.card-badge i { color: var(--accent); font-size: 8px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); }
+.card-price-from { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
+.card-price { font-family: var(--display); font-size: 24px; color: var(--accent); letter-spacing: 2px; }
+.card-buy { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; background: var(--accent); border-radius: 3px; color: #fff; font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: background .2s; }
+.product-card:hover .card-buy { background: #cc0000; }
+
+.footer { position: relative; z-index: 1; background: var(--bg2); border-top: 1px solid var(--border); padding: 60px 24px 0; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+.footer-brand-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.footer-brand-logo img { height: 34px; }
+.footer-brand-logo span { font-family: var(--display); font-size: 24px; color: #fff; letter-spacing: 4px; }
+.footer-desc { font-family: var(--body); font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+.footer-socials { display: flex; gap: 10px; }
+.social-btn { width: 36px; height: 36px; background: var(--card); border: 1px solid var(--border2); border-radius: 3px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 14px; text-decoration: none; transition: border-color .2s, color .2s; }
+.social-btn:hover { border-color: var(--accent); color: var(--accent); }
+.footer-col h4 { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.footer-col a { display: block; font-family: var(--body); font-size: 14px; color: var(--muted); text-decoration: none; padding: 6px 0; transition: color .2s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; font-family: var(--mono); font-size: 10px; color: var(--muted2); letter-spacing: 2px; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; z-index: 900; width: 42px; height: 42px; background: var(--card); border: 1px solid var(--border2); border-radius: 3px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 14px; text-decoration: none; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s, border-color .2s, color .2s; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { border-color: var(--accent); color: var(--accent); }
+
+@media(max-width: 900px) { .product-section { grid-template-columns: 1fr; gap: 36px; } .footer-inner { grid-template-columns: 1fr; gap: 36px; } }
+@media(max-width: 768px) { .nav-links, .nav-actions { display: none; } .hamburger { display: flex; } .navbar { padding: 0 20px; } }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav class="navbar">
+    <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt="QC CHEATS"></a></div>
+    <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="customer/index.html">Redeem License</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#footer">About</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="https://discord.gg/firecheats" target="_blank" class="nav-discord"><i class="fab fa-discord"></i> Discord</a>
+        <a href="customer/index.html" class="nav-dashboard"><i class="fa fa-user"></i> Dashboard</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html#home"     onclick="closeMobileNav()">Home</a>
+    <a href="index.html#products" onclick="closeMobileNav()">Products</a>
+    <a href="index.html#faq"      onclick="closeMobileNav()">FAQ</a>
+    <a href="index.html#footer"   onclick="closeMobileNav()">About</a>
+    <a href="customer/index.html"           onclick="closeMobileNav()">Redeem License</a>
+    <a href="https://discord.gg/firecheats" target="_blank">Discord</a>
+</div>
+
+<div class="page-wrap">
+
+    
+    <section class="product-section">
+
+        <div class="image-col">
+            <div class="main-img-wrap">
+                <img id="main-image" src="assets/images/FortniteUnreal.png" alt="Fortnite Private">
+            </div>
+            <div class="thumbnails">
+                <img src="assets/images/FortniteUnreal.png" alt="thumb" class="thumb active" onclick="setImage(this)">
+            </div>
+        </div>
+
+        <div class="info-col">
+            <div class="product-badges">
+                <span class="badge-primary">#1 Fortnite Cheat</span>
+                                    <span class="badge-updated">Updated for last patch</span>
+                            </div>
+
+            <h1 class="product-title">Fortnite Private</h1>
+
+            <div class="discount-box">
+                <div class="discount-top"><i class="fas fa-tag"></i> Limited Time Offer</div>
+                <div class="discount-row">
+                    <div class="discount-pct">-5%</div>
+                    <div class="discount-code-wrap">
+                        <div class="discount-label-txt">Use code:</div>
+                        <div class="code-row">
+                            <span class="discount-code-txt">FIREDISCOUNT</span>
+                            <button class="copy-btn" onclick="copyCode()" title="Copy code"><i class="fas fa-copy" id="copy-icon"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="countdown-row"><i class="fas fa-clock"></i><span id="countdown"></span></div>
+            </div>
+
+            <div class="product-desc">Windows 10 &amp; 11<br>Best Fortnite External<br>Ready for Tourneys</div>
+
+            <div class="purchase-form">
+                                <select id="tier-select" class="price-select">
+                    <option value="" disabled selected>Select your option</option>
+                                        <option value="day" data-price="6.99">
+                        1 Day: €6.99                    </option>
+                                        <option value="week" data-price="24.99">
+                        1 Week: €24.99                    </option>
+                                        <option value="month" data-price="49.99">
+                        1 Month: €49.99                    </option>
+                                        <option value="lifetime" data-price="149.99">
+                        1 Year: €149.99                    </option>
+                                    </select>
+                <a href="#" class="buy-btn" id="buy-btn" onclick="goCheckout(event)">
+                    <i class="fas fa-shopping-bag"></i> Buy Now
+                </a>
+                            </div>
+        </div>
+    </section>
+
+    <div class="features-box">
+        <div class="features-inner">
+            <div class="features-head"><i class="fas fa-star"></i><span>Features</span></div>
+            <div class="features-title">Fortnite Private</div>
+            <div class="features-list">
+                                <span class="feature-tag">Silent Aim</span>
+                                <span class="feature-tag">Magic Bullet</span>
+                                <span class="feature-tag">Bullet Tp</span>
+                                <span class="feature-tag">No Recoil</span>
+                                <span class="feature-tag">Instant Reload</span>
+                                <span class="feature-tag">Bullet Tracer</span>
+                                <span class="feature-tag">Wireframe</span>
+                                <span class="feature-tag">Chams</span>
+                                <span class="feature-tag">Speedhack (Players And Vehicules)</span>
+                                <span class="feature-tag">Car Tp</span>
+                                <span class="feature-tag">Shoot Through Wall</span>
+                                <span class="feature-tag">Zipline Lift</span>
+                                <span class="feature-tag">Etc...</span>
+                            </div>
+        </div>
+    </div>
+
+    <section class="other-section">
+        <div class="other-header">
+            <h2 class="other-title">Other Products You Might Like</h2>
+            <p class="other-sub">Discover more professional software tools designed to enhance your gaming experience.</p>
+        </div>
+        <div class="other-grid">
+                        <a href="product8802.html" class="product-card">
+                <div class="card-img-wrap">
+                    <img src="assets/images/FortniteUnrealInternal.png" alt="Fortnite Internal">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-name">Fortnite Internal</div>
+                    <div class="card-badges">
+                        <span class="card-badge"><i class="fas fa-bolt"></i> Instant Delivery</span>
+                        <span class="card-badge"><i class="fas fa-cog"></i> Easy Setup</span>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <div class="card-price-from">Starts at</div>
+                            <div class="card-price">€44.99</div>
+                        </div>
+                        <div class="card-buy"><i class="fas fa-shopping-bag"></i> Buy Now</div>
+                    </div>
+                </div>
+            </a>
+                        <a href="product0055.html" class="product-card">
+                <div class="card-img-wrap">
+                    <img src="assets/images/Spoofer.png" alt="Spoofer">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-name">Spoofer</div>
+                    <div class="card-badges">
+                        <span class="card-badge"><i class="fas fa-bolt"></i> Instant Delivery</span>
+                        <span class="card-badge"><i class="fas fa-cog"></i> Easy Setup</span>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <div class="card-price-from">Starts at</div>
+                            <div class="card-price">€6.99</div>
+                        </div>
+                        <div class="card-buy"><i class="fas fa-shopping-bag"></i> Buy Now</div>
+                    </div>
+                </div>
+            </a>
+                        <a href="product681a.html" class="product-card">
+                <div class="card-img-wrap">
+                    <img src="assets/images/Valorant.png" alt="Valorant Internal">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <div class="card-name">Valorant Internal</div>
+                    <div class="card-badges">
+                        <span class="card-badge"><i class="fas fa-bolt"></i> Instant Delivery</span>
+                        <span class="card-badge"><i class="fas fa-cog"></i> Easy Setup</span>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <div class="card-price-from">Starts at</div>
+                            <div class="card-price">€14.99</div>
+                        </div>
+                        <div class="card-buy"><i class="fas fa-shopping-bag"></i> Buy Now</div>
+                    </div>
+                </div>
+            </a>
+                    </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-logo"><img src="images/logo.png" alt="Logo"><span>QC CHEATS</span></div>
+                <p class="footer-desc">QC CHEATS provides reliable software solutions focused on performance, simplicity, and security.</p>
+                <div class="footer-socials">
+                    <a href="https://discord.gg/firecheats" target="_blank" class="social-btn"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="index.html#home">Home</a>
+                <a href="index.html#products">Products</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="index.html#footer">About</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="https://docs.google.com/document/d/1HnBQVndF_roLeS40VSeLsNZqLRHA1uIRWTeCoHoWpwU/edit" target="_blank">Terms of Service</a>
+                <a href="https://docs.google.com/document/d/1HnBQVndF_roLeS40VSeLsNZqLRHA1uIRWTeCoHoWpwU/edit" target="_blank">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 QC CHEATS. All rights reserved.</span></div>
+    </footer>
+</div>
+
+<a href="#" class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><i class="fas fa-chevron-up"></i></a>
+
+<script>
+function toggleMobileNav(){ document.getElementById('mobileNav').classList.toggle('show'); }
+function closeMobileNav() { document.getElementById('mobileNav').classList.remove('show'); }
+window.addEventListener('scroll', () => {
+    document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 300);
+});
+function setImage(el) {
+    document.getElementById('main-image').src = el.src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+}
+function copyCode() {
+    navigator.clipboard.writeText('FIREDISCOUNT').then(() => {
+        const icon = document.getElementById('copy-icon');
+        icon.className = 'fas fa-check';
+        setTimeout(() => icon.className = 'fas fa-copy', 2000);
+    });
+}
+(function() {
+    const D = 20 * 60 * 1000;
+    let end = parseInt(localStorage.getItem('fc_timer') || '0');
+    if (!end || end < Date.now()) { end = Date.now() + D; localStorage.setItem('fc_timer', end); }
+    const el = document.getElementById('countdown');
+    function tick() {
+        const d = end - Date.now();
+        if (d > 0) {
+            const m = Math.floor((d % 3600000) / 60000), s = Math.floor((d % 60000) / 1000);
+            el.textContent = m + 'm ' + s + 's left';
+        } else { el.textContent = 'EXPIRED'; clearInterval(t); }
+    }
+    tick(); const t = setInterval(tick, 1000);
+})();
+
+function goCheckout(e) {
+    e.preventDefault();
+    const sel = document.getElementById('tier-select');
+    if (!sel || !sel.value) { alert('Please select an option first.'); return; }
+    const opt   = sel.options[sel.selectedIndex];
+    const tier  = sel.value;
+    const price = opt.dataset.price;
+    window.location.href = 'checkout.html?product=Fortnite+Private&tier=' + encodeURIComponent(tier) + '&price=' + encodeURIComponent(price);
+}
+</script>
+<script>
+(function(){
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
+document.addEventListener('keydown',function(e){
+if(e.keyCode===123){e.preventDefault();return false;}
+if(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74||e.keyCode===67)){e.preventDefault();return false;}
+if(e.ctrlKey&&(e.keyCode===85||e.keyCode===83)){e.preventDefault();return false;}
+});
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"3b5ff913c5eb4f8ab6c2adba1eee2c4b","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from firecheats.net/product8803.php?id=7 by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 Apr 2026 22:02:35 GMT -->
+</html>
