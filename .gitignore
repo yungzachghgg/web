@@ -1,0 +1,26 @@
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Compressed files
+*.zip
+*.rar
+*.7z
+
+# Node modules
+node_modules/
+
+# Data storage (local JSON files - don't upload to Git)
+data/
+*.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
